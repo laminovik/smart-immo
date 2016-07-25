@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @rental.city %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @rental.district %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @rental.type %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @rental.price %>
+</p>
+
+<p>
+  <strong>Surface:</strong>
+  <%= @rental.surface %>
+</p>
+
+<p>
+  <strong>Sqm price:</strong>
+  <%= @rental.sqm_price %>
+</p>
+
+<p>
+  <strong>Rooms:</strong>
+  <%= @rental.rooms %>
+</p>
+
+<p>
+  <strong>Bathrooms:</strong>
+  <%= @rental.bathrooms %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @rental.website %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @rental.link %>
+</p>
+
+<p>
+  <strong>Last update:</strong>
+  <%= @rental.last_update %>
+</p>
+
+<%= link_to 'Edit', edit_rental_path(@rental) %> |
+<%= link_to 'Back', rentals_path %>

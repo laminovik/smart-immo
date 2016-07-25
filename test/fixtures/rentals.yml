@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_id: 
+  district_id: 
+  type_id: 
+  price: 1
+  surface: 1
+  sqm_price: 1
+  rooms: 1
+  bathrooms: 1
+  website: MyString
+  link: MyString
+  last_update: MyString
+
+two:
+  city_id: 
+  district_id: 
+  type_id: 
+  price: 1
+  surface: 1
+  sqm_price: 1
+  rooms: 1
+  bathrooms: 1
+  website: MyString
+  link: MyString
+  last_update: MyString

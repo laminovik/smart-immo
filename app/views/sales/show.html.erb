@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @sale.city %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @sale.district %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @sale.type %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @sale.price %>
+</p>
+
+<p>
+  <strong>Surface:</strong>
+  <%= @sale.surface %>
+</p>
+
+<p>
+  <strong>Rooms:</strong>
+  <%= @sale.rooms %>
+</p>
+
+<p>
+  <strong>Bathrooms:</strong>
+  <%= @sale.bathrooms %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @sale.website %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @sale.link %>
+</p>
+
+<p>
+  <strong>Last update:</strong>
+  <%= @sale.last_update %>
+</p>
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>
