@@ -4,7 +4,7 @@ class RentalsController < ApplicationController
   # GET /rentals
   # GET /rentals.json
   def index
-    @rentals = Rental.all
+    @rentals = Rental.page(params[:page]).per(20)
   end
 
   # GET /rentals/1

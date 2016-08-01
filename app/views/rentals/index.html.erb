@@ -2,11 +2,11 @@
 
 <div class="container">
 
-<h1><%= Rental.count %> annonces de location</h1>
+<h1><%= number_with_delimiter(Rental.count, delimiter: " ") %> annonces de location</h1>
 
   <table class="table table-striped text-center">
     <thead>
-      <tr class="text-center">
+      <tr>
         <th>Ville</th>
         <th>Quartier</th>
         <th>Type du bien</th>
@@ -14,7 +14,7 @@
         <th>Surface</th>
         <!-- <th>Prix du m</th> -->
         <th>Nombre pièces</th>
-        <th>Nombre de SdB</th>
+      
         <th>Lien vers l'annonce</th>
         <th>Publiée le</th>
         <th colspan="3"></th>
@@ -25,13 +25,13 @@
       <% @rentals.each do |rental| %>
         <tr>
           <td><%= rental.city.name %></td>
-          <td><%= rental.district.name %></td>
+          <td><%= rental.temp %></td>
           <td><%= rental.type.name %></td>
           <td><%= rental.price %></td>
           <td><%= rental.surface %></td>
           <!-- <td><%= rental.sqm_price %></td> -->
           <td><%= rental.rooms %></td>
-          <td><%= rental.bathrooms %></td>
+         
           <td> <a href=<%= rental.website+rental.link %>>Consulter l'annonce sur <%= rental.website[8..-1] %></a></td>
           
           <td><%= rental.last_update %></td>
@@ -45,5 +45,12 @@
 
   <br>
 
+<div class= "col-xs-offset-4">  
+  <%= paginate @rentals %>
+</div>
+<hr>
+
+
   <%= link_to 'Ajouter une annonce', new_rental_path %>
 </div>
+<hr>
