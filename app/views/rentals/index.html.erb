@@ -12,7 +12,7 @@
         <th>Type du bien</th>
         <th>Loyer</th>
         <th>Surface</th>
-        <!-- <th>Prix du m</th> -->
+        <th>Prix du m</th>
         <th>Nombre pièces</th>
       
         <th>Lien vers l'annonce</th>
@@ -29,10 +29,10 @@
           <td><%= rental.type.name %></td>
           <td><%= rental.price %></td>
           <td><%= rental.surface %></td>
-          <!-- <td><%= rental.sqm_price %></td> -->
+          <td><%= rental.sqm_price %></td>
           <td><%= rental.rooms %></td>
          
-          <td> <a href=<%= rental.website+rental.link %>>Consulter l'annonce sur <%= rental.website[8..-1] %></a></td>
+          <td> <a href=<%= rental.link %>>Consulter l'annonce sur <%= rental.website[7..-1] %></a></td>
           
           <td><%= rental.last_update %></td>
           <td><%= link_to 'Show', rental %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729220908) do
+ActiveRecord::Schema.define(version: 20160818180632) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160729220908) do
     t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "avito_code"
   end
 
   add_index "districts", ["city_id"], name: "index_districts_on_city_id"
@@ -71,6 +72,20 @@ ActiveRecord::Schema.define(version: 20160729220908) do
   add_index "sales", ["city_id"], name: "index_sales_on_city_id"
   add_index "sales", ["district_id"], name: "index_sales_on_district_id"
   add_index "sales", ["type_id"], name: "index_sales_on_type_id"
+
+  create_table "scraps", force: :cascade do |t|
+    t.string   "website"
+    t.string   "type"
+    t.integer  "city_id"
+    t.time     "started"
+    t.time     "ended"
+    t.integer  "total_scraped"
+    t.float    "variation"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "scraps", ["city_id"], name: "index_scraps_on_city_id"
 
   create_table "types", force: :cascade do |t|
     t.string   "name"
