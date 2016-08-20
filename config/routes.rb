@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
+  get 'pages/about'
+
+  get 'pages/main'
+
+  get 'districts/index'
+
+  get 'districts/show'
+
+  resources :districts, :path => '/districts', :only => [:index, :show]
+
+  devise_for :users
   #get 'cities/index'
 
   #get 'cities/show'
+  root to: "cities#index"
 
   resources :rentals
   resources :sales

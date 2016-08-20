@@ -1,0 +1,55 @@
+<div class="container">
+	<br /> 
+  <div class="row well">
+    <h3 class="col-xs-offset-3 col-xs-6"> Palmarès des quartiers les plus rentables </h3>
+    <h6 class="col-xs-offset-1 col-xs-2"><span class="btn btn-link" style="position: absolute; bottom: 0; right: 0;"><%= link_to "Retour à l'acceuil", cities_path %></span></h6>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-2">
+      <i>Quartiers analysés &nbsp &nbsp</i><span class="badge"><%= @districts.count%> </span>
+    </div>
+    <div class="col-xs-3">
+      <i>Total des annonces de vente &nbsp &nbsp</i><span class="badge"><%= Sale.count%> </span>
+    </div>
+    <div class="col-xs-3">
+      <i>Total des annonces de location &nbsp &nbsp</i><span class="badge"><%= Rental.count%> </span>
+    </div>
+  </div>
+  <hr>
+ 
+  <br />
+		<table class="table table-striped text-center">
+    	<thead>
+ 		  <tr>
+ 		  	<th>Rang</th>
+	        <th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp Quartier (ville)</th>
+	        <th>Rentabilité annuelle brute</th>
+	        <th>Annonces de vente</th>
+	        <th>Prix moyen du m²</th>
+	        <th>Annonces de location</th>
+	        <th>Loyer moyen du m²</th>
+	        
+	      </tr>
+	      	<% i=1%>
+			</thead>
+   			<% @districts.each do |district| %>
+   			
+   			 	<tr>
+            <td><%= i %> </td>
+            <% i+=1 %>
+            <td><%= district.name%>  (<%= district.city.name %>)</td>
+            <td><%= district.yield %> %</td>
+            <td><%= district.sales.count %></td>
+            <td><%= district.buy_sqm_price %></td>
+            <td><%= district.rentals.count %></td>
+            <td><%= district.rent_sqm_price %></td>
+            
+      		</tr>
+      		<% end %>
+      	</table>
+			       
+
+				
+
+</div>
+

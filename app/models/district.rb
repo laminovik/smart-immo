@@ -14,4 +14,14 @@ class District < ActiveRecord::Base
   def buy_sqm_price
   	sales.average(:sqm_price).to_i
   end
+
+  def self.valid limit
+    valid=[]
+    self.all.each do |d|
+      if d.rentals.count >=limit && d.sales.count >=limit && d.avito_code !="autre_secteur"
+        valid << d
+      end
+    end
+    return valid
+  end
 end

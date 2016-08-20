@@ -6,6 +6,6 @@ class CitiesController < ApplicationController
   def show
   	@city=City.find(params[:id])
   	@districts=@city.valid_districts(40)
-
   end
+  
 end

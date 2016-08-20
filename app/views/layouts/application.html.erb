@@ -8,6 +8,48 @@
 </head>
 <body>
 
+<nav class="navbar navbar-inverse fixed-top">
+  <div class="container">
+  	 <div class="navbar-inner">
+    	<a class="navbar-brand" href="#"><%= image_tag "orange.png", class: "logo text-center" %></a>
+	</div>
+    <ul class="nav navbar-nav">
+      <li class="active"> <%= link_to "Marché par ville", cities_path %> </li>
+      <li> <%= link_to "Quartiers les plus rentables", districts_path %> </li>
+      <li> <a href="#">Estimation de biens</a> </li>
+      <li> <a href="#">A propos</a> </li>
+    </ul>
+    <p class="navbar-text pull-right">
+	<% if user_signed_in? %>
+	  Connecté : <strong><%= current_user.email %></strong> |
+	  <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+	<% else %>
+	  <%= link_to "Inscription gratuite", new_user_registration_path, :class => 'navbar-link'  %> |
+	  <%= link_to "Connexion", new_user_session_path, :class => 'navbar-link'  %>
+	<% end %>
+	</p>
+  </div>
+</nav>
+
+
+		<% if notice %>
+		  <div class="row">
+	 		<span class="col-xs-offset-3 col-xs-5">
+			  <p class="alert alert-success text-center"><%= notice %></p>
+			 </span>
+		  </div>
+		<% end %>
+
+		<% if alert %>
+		  <div class="row">
+			<span class="col-xs-offset-3 col-xs-5">
+			  <p class="alert alert-danger text-center"><%= alert %></p>
+			</span>
+		  </div>
+		<% end %>
+	
+
+
 <%= yield %>
 
 </body>

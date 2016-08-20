@@ -1,0 +1,45 @@
+<div class="col-xs-12">
+  <h2 class="col-xs-offset-3">Inscription</h2>
+  <div class="row">
+    <div  class="well col-xs-5 col-xs-offset-3"> 
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label :first_name, "Prénom" %><br />
+        <%= f.email_field :first_name, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name, "Nom" %><br />
+        <%= f.email_field :last_name, class: "form-control" %>
+      </div>
+
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, "Mot de passe" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirmer le mot de passe" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control"  %>
+      </div>
+      <br />
+      <div class="actions col-xs-offset-10">
+        <%= f.submit "S'inscrire", class: "btn btn-info" %>
+      </div>
+    <% end %>
+  </div>
+  </div>
+
+  <%= render "devise/shared/links" %>
+</div>

@@ -9,23 +9,21 @@
       <i>Villes analysées &nbsp &nbsp</i><span class="badge"><%= @cities.count%> </span>
     </div>
     <div class="col-xs-3">
-      <i>Total des annonces de vente &nbsp &nbsp</i><span class="badge"><%= Sale.count%> </span>
+      <i>Total des annonces de vente &nbsp &nbsp</i>
+      <span class="badge"><%= number_with_delimiter(Sale.count, delimiter: " ")%> </span>
     </div>
     <div class="col-xs-3">
-      <i>Total des annonces de location &nbsp &nbsp</i><span class="badge"><%= Rental.count%> </span>
+      <i>Total des annonces de location &nbsp &nbsp</i>
+      <span class="badge"><%= number_with_delimiter(Rental.count, delimiter: " ") %> </span>
     </div>
   </div>
   <hr />
-  
-  
-
-	 <br />
    <br />
 
 		<table class="table table-striped text-center">
     		<thead>
      			 <tr>
-			        <th>Ville</th>
+			        <th>&nbsp &nbsp &nbsp &nbsp Ville</th>
 			        <th>Quartiers</th>
 			        <th>Annonces de vente</th>
 			        <th>Prix moyen du m²</th>
@@ -38,10 +36,10 @@
    			 	<tr>
    			 		 <td><%= link_to city.name, city %></td>
          			 <td><%= city.districts.count %></td>
-         			 <td><%= city.sales.count %></td>
-         			 <td><%= city.sales.average(:sqm_price).to_i %></td>
-         			 <td><%= city.rentals.count %></td>
-         			 <td><%= city.rentals.average(:sqm_price).to_i %></td>
+         			 <td><%= number_with_delimiter(city.sales.count, delimiter: " ") %></td>
+         			 <td><%= number_with_delimiter(city.buy_sqm_price, delimiter: " ") %></td>
+         			 <td><%= number_with_delimiter(city.rentals.count, delimiter: " ")%></td>
+         			 <td><%= number_with_delimiter(city.rent_sqm_price, delimiter: " ")%></td>
          			 <td><%= city.yield.to_s+ " %" %></td>
       			</tr>
       		<% end %>

@@ -2,7 +2,7 @@ class CreateScraps < ActiveRecord::Migration
   def change
     create_table :scraps do |t|
       t.string :website
-      t.string :type
+      t.string :category
       t.references :city, index: true, foreign_key: true
       t.time :started
       t.time :ended

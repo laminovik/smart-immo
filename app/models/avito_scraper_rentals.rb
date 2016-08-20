@@ -48,8 +48,8 @@ class AvitoScraperRentals
           end                            
         end        
         i+=1
-        #sleep(2)
       end
+      sleep(2)
       data=Nokogiri::HTML(open(nav_url+k.to_s))
     end
   end
@@ -76,7 +76,7 @@ class AvitoScraperRentals
       surface: surface, 
       rooms: get_rooms(item_data),
       price: price,
-      sqm_price: price/surface,
+      sqm_price: surface==0 ? nil : price/surface,
       type_id: get_type(item_data),
       detail: get_detail(item_data),
       last_update: get_last_update(item_data) 

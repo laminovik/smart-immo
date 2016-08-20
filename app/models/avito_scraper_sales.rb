@@ -52,9 +52,9 @@ class AvitoScraperSales
             puts "**** Non enregistré ******* Prix (#{item_extract[:price]} DH) ou Surface (#{item_extract[:surface]} m²) non valides "
           end                                   
         end
-        i+=1
-        #sleep(2)
+        i+=1 
       end
+      sleep(2)
       data=Nokogiri::HTML(open(nav_url+k.to_s))
     end
   end
@@ -83,7 +83,7 @@ class AvitoScraperSales
       surface: surface, 
       rooms: get_rooms(item_data),
       price: price,
-      sqm_price: price/surface,
+      sqm_price: surface==0 ? nil : price/surface,
       type_id: get_type(item_data),
       detail: get_detail(item_data),
       last_update: get_last_update(item_data) 
