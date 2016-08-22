@@ -8,7 +8,10 @@ class DistrictsController < ApplicationController
   	@district=District.find_by_id(params[:district])
   	@surface=params[:surface]
   	@type=params[:type]
-  	@sqm_price = @type=='1' ? District.find_by_id(params[:district]).buy_sqm_price : District.find_by_id(params[:district]).rent_sqm_price 
-  	@price= @sqm_price*@surface.to_i
+  	@sqm_price_buy = District.find_by_id(params[:district]).buy_sqm_price 
+  	@price= @sqm_price_buy*@surface.to_i
+    @sqm_price_rent = District.find_by_id(params[:district]).rent_sqm_price 
+    @rent= @sqm_price_rent*@surface.to_i
+
   end
 end

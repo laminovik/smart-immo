@@ -15,4 +15,15 @@
  *= require_self
  */
 
+ body { padding-top: 70px; }
+
+ .table > tbody > tr > td {
+     vertical-align: middle;
+}
+
+.table > thead > tr > th {
+
+	vertical-align: middle;
+}
+
 

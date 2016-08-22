@@ -4,57 +4,58 @@
      
      <div class="content-area">
         <div class="container">
-            <div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">
-                <h5>Notre démarche</h5>
+            <div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">                
                 <h2>Votre expert immoblier en ligne</h2>
                 <p class="col-md-offset-2 col-md-8">En exploitant des centaines de milliers d'annonces, SmartImmo vous fournit un référentiel fin du marché immobilier marocain. <br>Que ce soit pour évaluer vos biens, à la vente comme à la location, ou orienter votre investissement locatif vers les secteurs les plus profitables, SmartImmo vous révèle toutes les tendances cachées !</p>
             </div>
+            <br />
+            <br />
+
+            <h4 class="text-center">Nos services</h4>
             <div class="row how-it-work text-center">
                 <div class="col-md-4">
                     <div class="single-work wow fadeInUp" data-wow-delay="0.8s">
-                    	 <%= image_tag "calcul.PNG" %>
+                    	 <%= image_tag "how-work1.png", style: "heigth: 100px; width: 80px;"%>  
                         <h3>Evaluez votre bien immobilier au plus juste</h3>
                         <p>Obtenez une évaluation de votre bien au plus près de la réalité du marché immobilier</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="single-work  wow fadeInUp"  data-wow-delay="0.9s">
-                        <%= image_tag "how-work2.png" %>
-                        <h3>Parcourez notre panorama du marché marocain</h3>
-                        <p>Découvrez les tendances du marché dans les principales villes du Maroc : Prix de vente, de location et rendement immobilier n'auront plus de secrets pour vous</p>
-                    </div>
-                </div>
+               
                 <div class="col-md-4">
                     <div class="single-work wow fadeInUp"  data-wow-delay="1s">
-                    	<%= image_tag "how-work1.png" %>                     
+                    	<%= image_tag "palmares.png", style: "heigth: 100px; width: 80px;" %>                   
                         <h3>Découvrez les quartiers les plus rentables</h3>
                         <p>Grâce à notre classement des quartiers les plus rentables du Royaume, choisissez d'orienter votre investissement locatif vers les zones les plus profitables</p>
                     </div>
                 </div>
+
+                 <div class="col-md-4">
+                    <div class="single-work  wow fadeInUp"  data-wow-delay="0.9s">
+                        <%= image_tag "calcul1.jpeg", style: "heigth: 100px; width: 80px;" %>
+                        <h3>Parcourez notre panorama du marché marocain</h3>
+                        <p>Découvrez les tendances du marché dans les principales villes du Maroc : Prix de vente, de location et rendement immobilier n'auront plus de secrets pour vous</p>
+                    </div>
+                </div>
+
             </div>
         </div>
+        <br />
         <hr>
     </div>
 
+<br />
+<br />
 
-     <div class="row">
+     <div class="row" id="eval">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-            <h2>Estimation de biens</h2>
-            <p>Que ce soit pour une vente ou une mise en location, précisez les caractéristiques de votre bien immobilier et obtenez une évaluation au plus près des prix du marché !</p>
+            <h2 class="col-md-offset-4">Estimation de biens</h2>
+            <p class="text-center">Que ce soit pour une vente ou une mise en location, précisez les caractéristiques de votre bien immobilier et obtenez une évaluation au plus près des prix du marché !</p>
             
             <div class="search-form wow pulse" data-wow-delay="0.8s">
                 <form action="../districts/show" class="form-inline"> 
                     <div class="form-group">
-                        <select name="type" id="type_id" class="form-control">
-                            <option slected>Vous voulez ?</option>
-                            <option value=1>Vendre</option>
-                            <option value=2>Louer</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
                         <select name="city" id="city_id" class="form-control">
-                            <option slected>Selectionnez la ville</option>
+                            <option slected>Ville</option>
                             <% @cities.each do |city| %>
                             <option><%= city.name %></option>
                             <% end %>
@@ -62,7 +63,7 @@
                     </div>
 
                     <div class="form-group">
-                            <%= grouped_collection_select(:city,:district_id, @cities, :districts, :name, :id, :name, {include_blank: "Selectionnez un quartier"},{class: "form-control", name: 'district'})%>
+                            <%= grouped_collection_select(:city,:district_id, @cities, :districts, :name, :id, :name, {include_blank: "Quartier"},{class: "form-control", name: 'district'})%>
                     </div>
 
                     <div class="form-group">
@@ -72,35 +73,119 @@
                         </div>
                     </div>
 
+                     <div class="form-group">
+                        <select name="type" id="type_id" class="form-control">
+                            <option slected>Nombre de pièces</option>
+                            <option>Nombre de pièces</option>
+                            <option value="Studio">Studio</option>
+                            <option value="2 pièces">2 pièces</option>
+                            <option value="3 pièces">3 pièces</option>
+                            <option value="4 pièce">4 pièces</option>
+                            <option value="5+ pièces">5 pièces et plus</option>
+                        </select>
+                    </div>
+
                     <input type="submit" class="btn" value="C'est parti !">
 
                 </form>
             </div>
         </div>
     </div>
+    <br />
+    <br />
+    <hr />
+    <br />
 
 
-    <div class="container">
+
+<div class="container" id="palmares">
+    <div class="row page-title text-center wow bounce"  data-wow-delay="1s">  
+        <h2>Palmarès des 5 quartiers les plus rentables</h2>
+    </div>
+    <br />
+    <div class="row jobs">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="job-posts table-responsive">
+                <table class="table text-center">
+                    <thead >
+                         <tr>
+                            <th><%= image_tag "location.jpeg", class: "col-md-offset-3", style: "width: 60px; height: 50px"%></th>
+                            <th>Rentabilité annuelle</th>
+                            <th>Annonces de vente</th>
+                            <th>Prix moyen du m²</th>
+                            <th>Annonces de location</th>
+                            <th>Loyer moyen du m²</th>
+                          </tr>
+                    </thead>
+                    <% i=1%>
+                    <% @districts.each do |district| %>
+                        <tr>  
+                            <td class="tbl-title text-left"><i class="icon-location"><h5> <%= i.to_s+" - "+district.name%>  (<%= district.city.name %>)</h5></i></td>
+                            <% i+=1 %>
+                            <td><%= district.yield %> %</td>
+                            <td><%= number_with_delimiter(district.sales.count, delimiter: " ") %></td>
+                            <td><%= number_with_delimiter( district.sqm_buy, delimiter: " ")%></td>
+                            <td><%= number_with_delimiter(district.rentals.count, delimiter: " ") %></td>
+                            <td><%= number_with_delimiter( district.sqm_rent, delimiter: " ") %></td>            
+                        </tr>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+
+     <div class="row page-title text-center wow bounce"  data-wow-delay="1s">  
+         <h4>&raquo; &nbsp &nbsp<%= link_to "Découvrez le classement intégral", districts_index_path%> </h4>
+    </div>
+
+<br />
+<hr />
+<br />
+   
+
+    <div class="container" id="panorama">
                 <div class="row page-title text-center wow bounce"  data-wow-delay="1s">
-                    <h5>Recent Jobs</h5>
-                    <h2><span>54716</span> Available jobs for you</h2>
+                    
+                    <h4>Panorama du marché par ville</h4>
+                    <h2><span><%= number_with_delimiter(Rental.count+Sale.count, delimiter: " ") %></span> annonces immobilières analysées</h2>
+                    <i>&raquo; &nbsp  Cliquez sur une ville pour plus de détails </i>
                 </div>
+                <br />
                 <div class="row jobs">
-                    <div class="col-md-9">
+                    <div class="col-md-offset-1 col-md-10">
                         <div class="job-posts table-responsive">
-                            <table class="table">
-                                <tr class="odd wow fadeInUp" data-wow-delay="1s">
-                                    <td class="tbl-logo"><img src="img/job-logo1.png" alt=""></td>
-                                    <td class="tbl-title"><h4>Web Designer <br><span class="job-type">full time</span></h4></td>
-                                    <td><p>dribbble community</p></td>
-                                    <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
-                                    <td><p>&dollar; 14000</p></td>
-                                    <td class="tbl-apply"><a href="#">Apply now</a></td>
-                                </tr>
+                            <table class="table text-center">
+                                <thead>
+                                     <tr>
+                                        <th><%= image_tag "location.jpeg", class: "col-md-offset-3", style: "width: 60px; height: 50px"%></th>
+                                        <th>Quartiers</th>
+                                        <th>Annonces de vente</th>
+                                        <th>Prix moyen du m²</th>
+                                        <th>Annonces de location</th>
+                                        <th>Loyer moyen du m²</th>
+                                        <th>Rentabilité annuelle</th>
+                                      </tr>
+                                </thead>
+                                 <% @cities.each do |city| %>
+                                    <tr class="odd wow fadeInUp" data-wow-delay="1s">
+                                        <td class="tbl-title text-left"><i><h5>&raquo; &nbsp &nbsp <%= link_to city.name, city %></h5></i></td>
+                                        <td><%= city.districts.count %></td>
+                                        <td><%= number_with_delimiter(city.sales.count, delimiter: " ") %></td>
+                                        <td><%= number_with_delimiter(city.buy_sqm, delimiter: " ") %></td>
+                                        <td><%= number_with_delimiter(city.rentals.count, delimiter: " ")%></td>
+                                        <td><%= number_with_delimiter(city.rent_sqm, delimiter: " ")%></td>
+                                        <td><%= city.yield.to_s+ " %" %></td>
+                                    </tr>
+                                <% end %>
                             </table>
                         </div>
                     </div>
                 </div>
+
+                <br />
+                <br />
+                <br />
+    </div>
 
 
 </div>
