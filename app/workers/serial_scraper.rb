@@ -1,17 +1,17 @@
 
 
 
-City.where("id >= ?",3).each do |city|
+City.where("id >=?",2).each do |city|
 	puts "starting #{city.name} scrap"
-	sc=AvitoScraperSales.new city
+	sc=AvitoScraperRentals.new city
 	start=Time.now
-	cmp=Sale.count
+	cmp=Rental.count
 	sc.perform
-	cmp=Sale.count-cmp
+	cmp=Rental.count-cmp
 	ville=" *** #{city.name}  - #{cmp} annonces ***"
 	puts "finished #{city.name} scrap - #{cmp} scraped"
-	var=1.0*cmp/city.sales.count
-	Scrap.create website: "https://avito.ma", category: "Ventes", city_id: city.id,
+	var=1.0*cmp/city.rentals.count
+	Scrap.create website: "https://avito.ma", category: "Locations", city_id: city.id,
 				 started: start, ended: Time.now, total_scraped: cmp , variation: var
 end
 

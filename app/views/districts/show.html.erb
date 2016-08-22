@@ -1,2 +1,12 @@
-<h1>Districts#show</h1>
-<p>Find me in app/views/districts/show.html.erb</p>
+<h1>Estimation de votre bien</h1>
+<h3> Appartement de <%=@surface%> m² au quartier <%= @district.name %> à <%=@city.name%></h3>
+<h5> <%if @type==2%>
+	Loyer calculé de <%= @price %> DH / mois
+
+	<% else %>
+
+	Prix calculé de <%= @price %> DH
+	<% end %>
+
+
+</h5>

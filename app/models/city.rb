@@ -8,7 +8,7 @@ class City < ActiveRecord::Base
 	def valid_districts limit
 		valid=[]
 		districts.each do |d|
-			if d.rentals.count >=limit && d.sales.count >=limit
+			if d.rentals.count >=limit && d.sales.count >=limit && d.avito_code !="autre_secteur"
 				valid << d
 			end
 		end

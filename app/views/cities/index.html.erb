@@ -37,9 +37,9 @@
    			 		 <td><%= link_to city.name, city %></td>
          			 <td><%= city.districts.count %></td>
          			 <td><%= number_with_delimiter(city.sales.count, delimiter: " ") %></td>
-         			 <td><%= number_with_delimiter(city.buy_sqm_price, delimiter: " ") %></td>
+         			 <td><%= number_with_delimiter(city.buy_sqm, delimiter: " ") %></td>
          			 <td><%= number_with_delimiter(city.rentals.count, delimiter: " ")%></td>
-         			 <td><%= number_with_delimiter(city.rent_sqm_price, delimiter: " ")%></td>
+         			 <td><%= number_with_delimiter(city.rent_sqm, delimiter: " ")%></td>
          			 <td><%= city.yield.to_s+ " %" %></td>
       			</tr>
       		<% end %>

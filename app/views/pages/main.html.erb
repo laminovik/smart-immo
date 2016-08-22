@@ -1,2 +1,106 @@
-<h1>Pages#main</h1>
-<p>Find me in app/views/pages/main.html.erb</p>
+ <div class="container">
+   
+
+     
+     <div class="content-area">
+        <div class="container">
+            <div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">
+                <h5>Notre démarche</h5>
+                <h2>Votre expert immoblier en ligne</h2>
+                <p class="col-md-offset-2 col-md-8">En exploitant des centaines de milliers d'annonces, SmartImmo vous fournit un référentiel fin du marché immobilier marocain. <br>Que ce soit pour évaluer vos biens, à la vente comme à la location, ou orienter votre investissement locatif vers les secteurs les plus profitables, SmartImmo vous révèle toutes les tendances cachées !</p>
+            </div>
+            <div class="row how-it-work text-center">
+                <div class="col-md-4">
+                    <div class="single-work wow fadeInUp" data-wow-delay="0.8s">
+                    	 <%= image_tag "calcul.PNG" %>
+                        <h3>Evaluez votre bien immobilier au plus juste</h3>
+                        <p>Obtenez une évaluation de votre bien au plus près de la réalité du marché immobilier</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-work  wow fadeInUp"  data-wow-delay="0.9s">
+                        <%= image_tag "how-work2.png" %>
+                        <h3>Parcourez notre panorama du marché marocain</h3>
+                        <p>Découvrez les tendances du marché dans les principales villes du Maroc : Prix de vente, de location et rendement immobilier n'auront plus de secrets pour vous</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-work wow fadeInUp"  data-wow-delay="1s">
+                    	<%= image_tag "how-work1.png" %>                     
+                        <h3>Découvrez les quartiers les plus rentables</h3>
+                        <p>Grâce à notre classement des quartiers les plus rentables du Royaume, choisissez d'orienter votre investissement locatif vers les zones les plus profitables</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+     <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+            <h2>Estimation de biens</h2>
+            <p>Que ce soit pour une vente ou une mise en location, précisez les caractéristiques de votre bien immobilier et obtenez une évaluation au plus près des prix du marché !</p>
+            
+            <div class="search-form wow pulse" data-wow-delay="0.8s">
+                <form action="../districts/show" class="form-inline"> 
+                    <div class="form-group">
+                        <select name="type" id="type_id" class="form-control">
+                            <option slected>Vous voulez ?</option>
+                            <option value=1>Vendre</option>
+                            <option value=2>Louer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select name="city" id="city_id" class="form-control">
+                            <option slected>Selectionnez la ville</option>
+                            <% @cities.each do |city| %>
+                            <option><%= city.name %></option>
+                            <% end %>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                            <%= grouped_collection_select(:city,:district_id, @cities, :districts, :name, :id, :name, {include_blank: "Selectionnez un quartier"},{class: "form-control", name: 'district'})%>
+                    </div>
+
+                    <div class="form-group">
+                    	<div class="input-group">
+                        	<input type="text" name="surface" id="surface" class="form-control" placeholder="Surface du bien">
+                        	<span class="input-group-addon">m²</span>
+                        </div>
+                    </div>
+
+                    <input type="submit" class="btn" value="C'est parti !">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+                <div class="row page-title text-center wow bounce"  data-wow-delay="1s">
+                    <h5>Recent Jobs</h5>
+                    <h2><span>54716</span> Available jobs for you</h2>
+                </div>
+                <div class="row jobs">
+                    <div class="col-md-9">
+                        <div class="job-posts table-responsive">
+                            <table class="table">
+                                <tr class="odd wow fadeInUp" data-wow-delay="1s">
+                                    <td class="tbl-logo"><img src="img/job-logo1.png" alt=""></td>
+                                    <td class="tbl-title"><h4>Web Designer <br><span class="job-type">full time</span></h4></td>
+                                    <td><p>dribbble community</p></td>
+                                    <td><p><i class="icon-location"></i>San Franciso, USA</p></td>
+                                    <td><p>&dollar; 14000</p></td>
+                                    <td class="tbl-apply"><a href="#">Apply now</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+</div>

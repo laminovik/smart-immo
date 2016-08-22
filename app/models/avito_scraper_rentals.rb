@@ -23,7 +23,7 @@ class AvitoScraperRentals
     #nombre de pages de résultats à parcourir
     total_pages=count_pages(data)
     #boucle de parcours des pages de résultats
-    for k in 2..total_pages
+    for k in 2..(total_pages/7)
       items=data.css('h2.fs14')
       i=1
       #parcours des 35 résultats de la page num k

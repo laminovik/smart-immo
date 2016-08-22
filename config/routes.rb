@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   #get 'cities/index'
 
   #get 'cities/show'
-  root to: "cities#index"
+  root to: "pages#main"
 
   resources :rentals
   resources :sales

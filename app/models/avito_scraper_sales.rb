@@ -26,7 +26,7 @@ class AvitoScraperSales
     #nombre de pages de résultats à parcourir
     total_pages=count_pages(data)
     #boucle de parcours des pages de résultats
-    for k in 2..total_pages
+    for k in 2..(total_pages/5)
       #data=Nokogiri::HTML(open(nav_url+k.to_s))
       items=data.css('h2.fs14')
       i=1
