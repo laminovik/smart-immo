@@ -126,9 +126,9 @@
                             <td class="tbl-title text-left"><i class="icon-location"><h5> <%= i.to_s+" - "+district.name%>  (<%= district.city.name %>)</h5></i></td>
                             <% i+=1 %>
                             <td><%= district.yield %> %</td>
-                            <td><%= number_with_delimiter(district.sales.count, delimiter: " ") %></td>
+                            <td><%= number_with_delimiter(district.sales_count, delimiter: " ") %></td>
                             <td><%= number_with_delimiter( district.sqm_buy, delimiter: " ")%></td>
-                            <td><%= number_with_delimiter(district.rentals.count, delimiter: " ") %></td>
+                            <td><%= number_with_delimiter(district.rentals_count, delimiter: " ") %></td>
                             <td><%= number_with_delimiter( district.sqm_rent, delimiter: " ") %></td>            
                         </tr>
                     <% end %>
@@ -173,9 +173,9 @@
                                     <tr class="odd wow fadeInUp" data-wow-delay="1s">
                                         <td class="tbl-title text-left"><i><h5>&raquo; &nbsp &nbsp <%= link_to city.name, city %></h5></i></td>
                                         <td><%= city.districts.count %></td>
-                                        <td><%= number_with_delimiter(city.sales.count, delimiter: " ") %></td>
+                                        <td><%= number_with_delimiter(city.sales_count, delimiter: " ") %></td>
                                         <td><%= number_with_delimiter(city.buy_sqm, delimiter: " ") %></td>
-                                        <td><%= number_with_delimiter(city.rentals.count, delimiter: " ")%></td>
+                                        <td><%= number_with_delimiter(city.rentals_count, delimiter: " ")%></td>
                                         <td><%= number_with_delimiter(city.rent_sqm, delimiter: " ")%></td>
                                         <td><%= city.yield.to_s+ " %" %></td>
                                     </tr>

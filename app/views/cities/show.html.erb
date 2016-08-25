@@ -11,10 +11,10 @@
       <i>Quartiers analysés &nbsp &nbsp</i><span class="badge"><%= @districts.count%> </span>
     </div>
     <div class="col-xs-3">
-      <i>Total des annonces de vente &nbsp &nbsp</i><span class="badge"><%= @city.sales.count%> </span>
+      <i>Total des annonces de vente &nbsp &nbsp</i><span class="badge"><%= @city.sales_count%> </span>
     </div>
     <div class="col-xs-3">
-      <i>Total des annonces de location &nbsp &nbsp</i><span class="badge"><%= @city.rentals.count%> </span>
+      <i>Total des annonces de location &nbsp &nbsp</i><span class="badge"><%= @city.rentals_count%> </span>
     </div>
   </div>
   <hr>
@@ -34,9 +34,9 @@
    			<% @districts.each do |district| %>
    			 	<tr>
             <td><%= district.name %></td>
-            <td><%= district.sales.count %></td>
+            <td><%= district.sales_count %></td>
             <td><%= district.sqm_buy %></td>
-            <td><%= district.rentals.count %></td>
+            <td><%= district.rentals_count %></td>
             <td><%= district.sqm_rent %></td>
             <td><%= district.yield.to_s+ " %" %></td>
       		</tr>

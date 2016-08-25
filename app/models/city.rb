@@ -8,14 +8,14 @@ class City < ActiveRecord::Base
 	def valid_districts limit
 		valid=[]
 		districts.each do |d|
-			if d.rentals.count >=limit && d.sales.count >=limit && d.avito_code !="autre_secteur"
+			if d.rentals_count >=limit && d.sales_count >=limit && d.avito_code !="autre_secteur"
 				valid << d
 			end
 		end
 		return valid
 	end
 
-	def yield
+	def calculate_yield
 		(1200*rentals.average(:sqm_price).to_f/sales.average(:sqm_price).to_f).round(2)
 	end
 
