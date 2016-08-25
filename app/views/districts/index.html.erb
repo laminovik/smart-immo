@@ -32,18 +32,16 @@
 	      </tr>
 	      	<% i=1%>
 			</thead>
-   			<% @districts.each do |district| %>
-   			
+   			  <% @districts.each do |district| %>
    			 	<tr>
             <td><%= i %> </td>
             <% i+=1 %>
             <td><%= district.name%>  (<%= district.city.name %>)</td>
             <td><%= district.yield %> %</td>
-            <td><%= district.sales.count %></td>
+            <td><%= district.sales_count %></td>
             <td><%= district.sqm_buy %></td>
-            <td><%= district.rentals.count %></td>
-            <td><%= district.sqm_rent %></td>
-            
+            <td><%= district.rentals_count %></td>
+            <td><%= district.sqm_rent %></td>            
       		</tr>
       		<% end %>
       	</table>
