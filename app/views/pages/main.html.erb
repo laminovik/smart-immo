@@ -18,7 +18,7 @@
             <div class="row how-it-work text-center">
                 <div class="col-md-4">
                     <div class="single-work wow fadeInUp" data-wow-delay="0.8s">
-                    	 <%= image_tag "how-work1.png", style: "heigth: 100px; width: 80px;"%>  
+                    	 <%= link_to (image_tag "how-work1.png", style: "heigth: 100px; width: 80px;"), root_path(anchor: "eval"), method: :get%>  
                         <h3>Evaluez votre bien immobilier au plus juste</h3>
                         <p>Obtenez une évaluation de votre bien au plus près de la réalité du marché immobilier</p>
                     </div>
@@ -26,7 +26,7 @@
                
                 <div class="col-md-4">
                     <div class="single-work wow fadeInUp"  data-wow-delay="1s">
-                    	<%= image_tag "palmares.png", style: "heigth: 100px; width: 80px;" %>                   
+                    	<%= link_to (image_tag "palmares.png", style: "heigth: 100px; width: 80px;"), root_path(anchor: "palmares"), method: :get %>                   
                         <h3>Découvrez les quartiers les plus rentables</h3>
                         <p>Grâce à notre classement des quartiers les plus rentables du Royaume, choisissez d'orienter votre investissement locatif vers les zones les plus profitables</p>
                     </div>
@@ -34,7 +34,7 @@
 
                  <div class="col-md-4">
                     <div class="single-work  wow fadeInUp"  data-wow-delay="0.9s">
-                        <%= image_tag "calcul1.jpeg", style: "heigth: 100px; width: 80px;" %>
+                        <%= link_to (image_tag "calcul1.jpeg", style: "heigth: 100px; width: 80px;"), root_path(anchor: "panorama"), method: :get %>
                         <h3>Parcourez notre panorama du marché marocain</h3>
                         <p>Découvrez les tendances du marché dans les principales villes du Maroc : prix de vente, de location et rendement immobilier n'auront plus de secrets pour vous</p>
                     </div>
@@ -95,13 +95,17 @@
         </div>
     </div>
     <br />
-    <br />
-    <hr />
-    <br />
+    
 
 
 
 <div class="container" id="palmares">
+    <br />
+    <br />
+    <hr />
+    <br />
+    <br />
+
     <div class="row page-title text-center wow bounce"  data-wow-delay="1s">  
         <h2>Palmarès des 5 quartiers les plus rentables</h2>
     </div>
@@ -142,11 +146,14 @@
     </div>
 
 <br />
-<hr />
 <br />
    
 
     <div class="container" id="panorama">
+
+        <br />
+<hr />
+<br />
                 <div class="row page-title text-center wow bounce"  data-wow-delay="1s">
                     
                     <h4>Panorama du marché par ville</h4>

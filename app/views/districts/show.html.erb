@@ -17,17 +17,19 @@
             	<h4 class="text-center"><%=@type %> de <%=@surface%> m²</h4>
             	<br />
 
-            	<div class="col-xs-offset-1 col-xs-4">
-      				<h5>Prix de vente moyen &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @price, delimiter: " ")%> DH </span></h5>
-    			</div>
+          <div class="row">
+            <div class="col-xs-offset-1 col-xs-4">
+        				<h5>Prix de vente moyen &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @price, delimiter: " ")%> DH </span></h5>
+      			</div>
 
-			    <div class="col-xs-3">
-			      <h5>Loyer moyen &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @rent, delimiter: " ")%> DH </span></h5>
-			    </div>
+  			    <div class="col-xs-3">
+  			      <h5>Loyer moyen &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @rent, delimiter: " ")%> DH </span></h5>
+  			    </div>
 
-			    <div class="col-xs-4">
-			      <h5>Rentabilité estimée &nbsp &nbsp<span class="badge"><%= @district.yield%> % </span></h5>
-			    </div>
+  			    <div class="col-xs-4">
+  			      <h5>Rentabilité estimée &nbsp &nbsp<span class="badge"><%= @district.yield%> % </span></h5>
+  			    </div>
+          </div>
             
        		 </div>
        		
@@ -36,7 +38,7 @@
 </div>
 
 	<div class="col-md-12 text-center">
-		<h4>&raquo; &nbsp &nbsp <%=link_to "Nouvelle estimation", pages_main_path, method: :get%></h4>
+		<h4>&raquo; &nbsp &nbsp <%=link_to "Nouvelle estimation", root_path(anchor: "eval"), method: :get%></h4>
 	</div>
 
 

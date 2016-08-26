@@ -13,7 +13,7 @@ jQuery ->
 		
 		if options
 			$('#city_district_id').html(options)
-			$('#city_district_id').prepend($("<option value='nil'>Quartier</option>"))
+			$('#city_district_id').prepend($("<option value='nil'>Quartier à #{city}</option>"))
 			$('#city_district_id').val('nil')
 			
 		else	
