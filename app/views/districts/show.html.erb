@@ -1,7 +1,7 @@
 
 
 
-
+  <% if @district.valid? %>
 
  
    <div class="col-xs-offset-2 col-xs-8">
@@ -36,65 +36,97 @@
       </div>
     </div>
 
-    <div class="col-sm-offset-2 col-sm-8 col-xs-12">
-    <div class="panel panel-warning">   
-          
-      <div class="panel-heading">
-        <h3 class="panel-title text-center">Caractéristiques du quartier</h3>
-      </div>
+<div class="col-sm-offset-2 col-sm-4 col-xs-12">
+  <div class="panel panel-warning">             
+    <div class="panel-heading">
+        <h3 class="panel-title text-center">m² à l'achat au quartier <%=@district.name%></h3>
+    </div>
 
-        <div class="row">
-          <br />
-          <div class="col-xs-offset-1 col-xs-2">
-              <h5><b><i>Prix du m² &nbsp :</i></b></h5>
-          </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="bs-component">
      
-
-          <div class="col-xs-3">
-            <h5>minimum &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @district.sales.minimum('sqm_price'), delimiter: " ")%> DH </span></h5>
-          </div>
-
-          <div class=" col-xs-3">
-              <h5>moyenne  &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @sqm_price_buy, delimiter: " ")%> DH </span></h5>
-          </div>
-
-          <div class="col-xs-3">
-            <h5>maximum &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @district.sales.maximum('sqm_price'), delimiter: " ")%> DH </span></h5>
-          </div>
-        </div>
-
-        <hr />
-
-         <div class="row">
-          <div class="col-xs-offset-1 col-xs-2">
-              <h5><b><i>Loyer du m² &nbsp  :</i></b></h5>
-          </div>
-
-          <div class="col-xs-3">
-            <h5>minimum &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @district.rentals.minimum('sqm_price'), delimiter: " ")%> DH </span></h5>
-          </div>
-
-          <div class="col-xs-3">
-              <h5>moyenne &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @sqm_price_rent, delimiter: " ")%> DH </span></h5>
-          </div>
-
-          <div class="col-xs-3">
-            <h5>maximum &nbsp &nbsp<span class="badge"><%= number_with_delimiter( @district.rentals.maximum('sqm_price'), delimiter: " ")%> DH </span></h5>
-          </div>
-        </div>
-        <br />
-
-
-       
+          <ul class="list-group">
             
-       		 
-       		
-    
-	</div>
+            <li class="list-group-item">
+              Nombre d'annonces de vente
+              <span class="badge"><%=@stats_sales[:number].to_i%></span>
+            </li>
+
+             <li class="list-group-item">
+              Estimation basse du m²
+              <span class="badge"><%=number_with_delimiter(@stats_sales[:q1].to_i, delimiter: " ")%> DH</span>
+            </li>
+
+            <li class="list-group-item">
+              Estimation moyenne du m²
+              <span class="badge"><%= number_with_delimiter(@stats_sales[:mean].to_i, delimiter: " ")%> DH</span>
+            </li>             
+
+            <li class="list-group-item">
+              Estimation haute du m²
+              <span class="badge"><%=number_with_delimiter(@stats_sales[:q3].to_i, delimiter: " ")%> DH</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-	<div class="col-md-12 text-center">
-		<h4>&raquo; &nbsp &nbsp <%=link_to "Nouvelle estimation", root_path(anchor: "eval"), method: :get%></h4>
-	</div>
+        
+
+<div class="col-sm-4 col-xs-12">
+  <div class="panel panel-warning">           
+    <div class="panel-heading">
+      <h3 class="panel-title text-center">m² à la location au quartier <%=@district.name%></h3>
+    </div>
+        <div class="bs-component">
+          <ul class="list-group">
+            
+            <li class="list-group-item">
+              Nombre d'annonces de location
+              <span class="badge"><%=@stats_rentals[:number].to_i%></span>
+            </li>
+
+            <li class="list-group-item">
+              Estimation basse du m²
+              <span class="badge"><%=@stats_rentals[:q1].to_i%></span>
+            </li>
+
+            <li class="list-group-item">
+              Estimation moyenne du m²
+              <span class="badge"><%=@stats_rentals[:mean].to_i%></span>
+            </li>
+
+
+            <li class="list-group-item">
+              Estimation haute du m²
+              <span class="badge"><%=@stats_rentals[:q3].to_i%></span>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+      
+    
+<% else %>
+
+  <div class="col-xs-offset-2 col-xs-8">
+    <div class="well text-center">
+      <h3> C'est gênant...  </h3>
+      Nous ne disposons pas de suffisement d'annonces pour réaliser une estimation fiable de votre bien au quartier <%= @district.name%>
+    </div>
+  </div>
+
+<% end %>
+
+
+<div class="col-md-12 text-center">
+	<h4>&raquo; &nbsp <%=link_to "Nouvelle estimation", root_path(anchor: "eval"), method: :get%></h4>
+</div>
 
 

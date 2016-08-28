@@ -25,13 +25,9 @@ class District < ActiveRecord::Base
     return valid
   end
 
-  # def sales_low_end
-  #   total=sales.count
-  #   sales.order(:sqm_price).limit(total/5).average(:sqm_price).to_i
-  # end
+  def valid?
+    rentals_count >=10 && sales_count >=10
+  end
 
-  #   def sales_high_end
-  #   total=sales.count
-  #   sales.order(sqm_price: :desc).limit(total/5).average(:sqm_price).to_i
-  # end
+
 end

@@ -51,6 +51,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
+    descriptive_statistics (2.4.0)
     devise (3.5.6)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -170,6 +171,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  descriptive_statistics (~> 2.4.0)
   devise
   jbuilder (~> 2.0)
   jquery-rails
