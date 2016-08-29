@@ -4,7 +4,7 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.page(params[:page]).per(20)
+    @sales = Sale.all.page(params[:page]).per(20)
   end
 
   # GET /sales/1
