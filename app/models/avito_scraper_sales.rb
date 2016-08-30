@@ -92,8 +92,16 @@ class AvitoScraperSales
 
   #Pour exclure les annonces avec prix ou surface bcp trop faibles
   def valid_record? extract
-    moyenne=District.find_by_id(extract[:district_id]).sqm_buy
-    extract[:surface] >=10 && extract[:price]>=50000 && (extract[:sqm_price] >= moyenne/3) && (extract[:sqm_price] <= 3*moyenne)
+    if District.find_by_id(extract[:district_id]).nil?
+      extract[:surface] >=10 && extract[:price]>=50000
+    else
+      moyenne=District.find_by_id(extract[:district_id]).sqm_buy
+      if moyenne.nil?
+        extract[:surface] >=10 && extract[:price]>=50000
+      else
+        extract[:surface] >=10 && extract[:price]>=50000 && (extract[:sqm_price] >= moyenne/3) && (extract[:sqm_price] <= 3*moyenne)
+      end
+    end
   end
 
   def get_price item_data

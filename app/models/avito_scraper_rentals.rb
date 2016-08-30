@@ -84,8 +84,16 @@ class AvitoScraperRentals
   end
 
   def valid_record? extract
-    moyenne=District.find_by_id(extract[:district_id]).sqm_rent
-    extract[:surface] >=10 && extract[:price]<=70000 && (extract[:sqm_price] >= moyenne/3) && (extract[:sqm_price] <= 3*moyenne)
+    if District.find_by_id(extract[:district_id]).nil?
+      extract[:surface] >=10 && extract[:price]<=70000
+    else
+      moyenne=District.find_by_id(extract[:district_id]).sqm_rent
+      if moyenne.nil?
+        extract[:surface] >=10 && extract[:price]<=70000
+      else
+      extract[:surface] >=10 && extract[:price]<=70000 && (extract[:sqm_price] >= moyenne/3) && (extract[:sqm_price] <= 3*moyenne)
+      end
+    end
   end
 
   def get_price item_data
