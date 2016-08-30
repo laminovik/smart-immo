@@ -23,7 +23,7 @@ class AvitoScraperRentals
     #nombre de pages de résultats à parcourir
     total_pages=count_pages(data)
     #boucle de parcours des pages de résultats
-    for k in 2..(total_pages/6)
+    for k in 2..(total_pages/7)
       items=data.css('h2.fs14')
       i=1
       #parcours des 35 résultats de la page num k
@@ -44,7 +44,7 @@ class AvitoScraperRentals
             puts "*************** @ #{@city.name} -- Extraction de l'annonce #{i} de la page #{k-1}/#{total_pages} *************"
             puts "#{item_extract[:rooms]} pièces de #{item_extract[:surface]} m², au prix de #{item_extract[:price]} DH / mois"
           else
-            puts "**** Non enregistré ******* Prix (#{item_extract[:price]} DH) ou Surface (#{item_extract[:surface]} m²) non valides "
+            puts "**** Non enregistré ******* Prix (#{item_extract[:price]} DH) ou Surface (#{item_extract[:surface]}) m² ou Prix du m² (#{item_extract[:sqm_price]}) non valides "
           end                            
         end        
         i+=1
@@ -84,7 +84,8 @@ class AvitoScraperRentals
   end
 
   def valid_record? extract
-    extract[:surface] >=10 && extract[:price]<=70000
+    moyenne=District.find_by_id(extract[:district_id]).sqm_rent
+    extract[:surface] >=10 && extract[:price]<=70000 && (extract[:sqm_price] >= moyenne/3) && (extract[:sqm_price] <= 3*moyenne)
   end
 
   def get_price item_data

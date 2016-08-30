@@ -49,7 +49,7 @@ class AvitoScraperSales
             puts "*************** Extraction de l'annonce #{i} de la page #{k-1}/#{total_pages} *************"
             puts "#{item_extract[:rooms]} pièces de #{item_extract[:surface]} m², au prix de #{item_extract[:price]} DH"
           else
-            puts "**** Non enregistré ******* Prix (#{item_extract[:price]} DH) ou Surface (#{item_extract[:surface]} m²) non valides "
+            puts "**** Non enregistré ******* Prix (#{item_extract[:price]} DH) ou Surface (#{item_extract[:surface]} m²) ou Prix du m² (#{item_extract[:sqm_price]}) non valides "
           end                                   
         end
         i+=1 
@@ -92,7 +92,8 @@ class AvitoScraperSales
 
   #Pour exclure les annonces avec prix ou surface bcp trop faibles
   def valid_record? extract
-    extract[:surface] >=10 && extract[:price]>=50000
+    moyenne=District.find_by_id(extract[:district_id]).sqm_buy
+    extract[:surface] >=10 && extract[:price]>=50000 && (extract[:sqm_price] >= moyenne/3) && (extract[:sqm_price] <= 3*moyenne)
   end
 
   def get_price item_data
