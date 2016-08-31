@@ -6,7 +6,7 @@ class DistrictsController < ApplicationController
   def show
   	@city=City.find_by_name(params[:city])
   	@district=District.find_by_id(params[:district])
-    if @district.valid?
+    if @district.is_valid?
     	@surface=params[:surface]
     	@type=params[:type]
     	@sqm_price_buy = District.find_by_id(params[:district]).sqm_buy 

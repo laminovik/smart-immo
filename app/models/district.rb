@@ -25,7 +25,7 @@ class District < ActiveRecord::Base
     return valid
   end
 
-  def valid?
+  def is_valid?
     rentals_count >=10 && sales_count >=10
   end
 
