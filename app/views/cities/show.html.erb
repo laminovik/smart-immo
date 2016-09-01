@@ -4,10 +4,10 @@
 	<br /> 
   <div class="row well">
     <h3 class="col-xs-offset-3 col-xs-6">Rendement locatif des quartiers de <%= @city.name %></h3>
-    <h6 class="col-xs-offset-1 col-xs-2"><span class="btn btn-link" style="position: absolute; bottom: 0; right: 0;"><%= link_to "Retour à l'index des villes", cities_path %></span></h6>
+    <h6 class="col-xs-offset-1 col-xs-2"><span class="btn btn-link" style="position: absolute; bottom: 0; right: 0;"><%= link_to "Retour à l'index des villes", root_path(anchor: "panorama"), method: :get%></span></h6>
   </div>
   <div class="row">
-    <div class="col-xs-offset-1 col-xs-2">
+    <div class="col-xs-offset-2 col-xs-2">
       <i>Quartiers analysés &nbsp &nbsp</i><span class="badge"><%= @districts.count%> </span>
     </div>
     <div class="col-xs-3">
