@@ -75,7 +75,7 @@ class MarocAnnoncesScraperSales
 	  		more_pages=false
 	  	end
 	  	k+=1
-	  	sleep(2)
+	  	#sleep(2)
   	end
 	end
 
