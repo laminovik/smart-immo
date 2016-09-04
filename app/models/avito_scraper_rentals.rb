@@ -5,16 +5,11 @@ class AvitoScraperRentals
   def initialize city
     @website="https://avito.ma"
     @city = city
-    @date=Date.today
   end
 
-  attr_accessor :website, :date, :city
+  attr_accessor :website, :city
 
-  def perform
-    fetch_results
-  end
-
-  def fetch_results   
+  def perform   
     #url main_page des locations d'appartements par ville
     url = "https://www.avito.ma/fr/#{URI::encode(@city.name.downcase)}/appartements-%C3%A0_louer"
     #url de navigation dans les pages de résultats des locations

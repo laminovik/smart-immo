@@ -11,12 +11,7 @@ class AvitoScraperSales
   attr_accessor :website, :date, :city
 
   def perform
-    fetch_results
-  end
-
- 
-
-  def fetch_results
+    
     #url main_page des ventes d'appartements à Casablanca, Rabat, Marrakech, Tanger, Agadir, Mohammedia, Kénitra, k%C3%A9nitra
     url = "https://www.avito.ma/fr/#{URI::encode(@city.name.downcase)}/appartements-%C3%A0_vendre"
     #url de navigation dans les pages de résultats des ventes
