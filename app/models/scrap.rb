@@ -45,12 +45,13 @@ class Scrap < ActiveRecord::Base
 
 	def self.bring_sales
 		storage=[]
+		start=Time.now
 
 		initial=City.first.sales.count
-		District.where("city_id = ? AND maroc_annonces_code >= ? AND id >=?",1,1,59).each do |district|
+		District.where("city_id = ? AND maroc_annonces_code >= ?",1,1).each do |district|
 			puts "starting #{district.name} scrap"
 			sc=MarocAnnoncesScraperSales.new district
-			start=Time.now
+			
 			cmp=Sale.count
 			sc.perform
 			cmp=Sale.count-cmp
