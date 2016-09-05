@@ -43,7 +43,9 @@ class Scrap < ActiveRecord::Base
 		end
 	end
 
-	def self.bring_sales(*district_min,*district_max)
+	def self.bring_sales(min=nil,max=nil)
+		min ||= 0
+		max ||= 1000
 		storage=[]
 		start=Time.now
 
