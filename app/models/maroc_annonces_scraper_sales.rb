@@ -35,9 +35,9 @@ class MarocAnnoncesScraperSales
 	      item_url=URI::encode(item_link)
 
 	      if without_price?(item)
-	        puts "***************#{@website} -- #{@city.name} -- Pas de prix / Saut de l'annonce #{i} de la page #{k} du quartier #{@district.name}*************"   
+	        puts "***************#{@website} -- #{@city.name} --#{@district.name} -- Pas de prix / Saut de l'annonce #{i} de la page #{k}*************"   
 	      elsif Sale.exists?(link: item_url)
-	        puts "***************#{@website} -- #{@city.name} -- Existe déjà / Saut de l'annonce #{i} de la page #{k} du quartier #{@district.name}*************"        
+	        puts "***************#{@website} -- #{@city.name} --#{@district.name}-- Existe déjà / Saut de l'annonce #{i} de la page #{k}*************"        
 	      else
 	        begin
 		        #chargement de l'annonce
@@ -46,13 +46,13 @@ class MarocAnnoncesScraperSales
 		          item_extract=extract_item_data(item,item_data,item_url)
 		          if valid_record?(item_extract)
 		            Sale.create item_extract
-		            puts "*************** #{@website} -- #{@city.name} -- Extraction de l'annonce #{i} de la page #{k} *************"
-		            puts "#{item_extract[:rooms]} pièces de #{item_extract[:surface]} m², au prix de #{item_extract[:price]} DH / mois"
+		            puts "**********#{@website} -- #{@city.name} -- #{@district.name} -- Extraction de l'annonce #{i} de la page #{k} *************"
+		            puts "#{@district.name} **** #{item_extract[:rooms]} pièces de #{item_extract[:surface]} m², au prix de #{item_extract[:price]} DH / mois"
 		          else
-		            puts "****#{@website} -- #{@city.name} -- Non enregistré ******* Prix (#{item_extract[:price]} DH) ou Surface (#{item_extract[:surface]}) m² ou Prix du m² (#{item_extract[:sqm_price]}) non valides "
+		            puts "****#{@website} -- #{@city.name} --#{@district.name} -- Non enregistré ******* Prix (#{item_extract[:price]} DH) ou Surface (#{item_extract[:surface]}) m² ou Prix du m² (#{item_extract[:sqm_price]}) non valides "
 		          end 
 		       	else  
-		       		puts "***************#{@website} -- #{@city.name} -- Pas assez d'infos / Saut de l'annonce #{i} de la page #{k} du quartier #{@district.name}*************"                         
+		       		puts "*****#{@website} -- #{@city.name} -- #{@district.name} -- Pas assez d'infos / Saut de l'annonce #{i} de la page #{k}*************"                         
 		      	end 
 			  
 			    rescue OpenURI::HTTPError => e

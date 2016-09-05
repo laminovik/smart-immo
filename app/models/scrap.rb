@@ -72,7 +72,7 @@ class Scrap < ActiveRecord::Base
 		self.create website: "http://www.marocannonces.com/", category: "Ventes", city_id: 1,
 						 started: start, ended: Time.now, total_scraped: cmp , variation: var
 
-		City.first.update sales_count: city.sales.count, buy_sqm: city.buy_sqm_price, yield: city.calculate_yield
+		City.first.update sales_count: City.first.sales.count, buy_sqm: City.first.buy_sqm_price, yield: City.first.calculate_yield
 		storage
 	end
 	
