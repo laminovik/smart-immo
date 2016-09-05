@@ -71,8 +71,10 @@ class MarocAnnoncesScraperSales
 	  	#bloc pour vérifier si la page courante k est la dernière
 	  	pages=data.css('ul.paging').css('li')
 	  	displayed=pages.count
-	  	if pages.nil? or pages[displayed-2].children.children.text == k.to_s
+	  	if items.count <=19 
 	  		more_pages=false
+	  	elsif pages[displayed-2].children.children.text == k.to_s
+	  		
 	  	end
 	  	k+=1
 	  	#sleep(2)
