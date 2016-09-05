@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class MarocAnnoncesScraperSales
+class MarocAnnoncesScraperRentals
 
 	def initialize district
 	    @website="http://www.marocannonces.com/"
@@ -21,7 +21,7 @@ class MarocAnnoncesScraperSales
     while more_pages
 
 	    #url k des pages de ventes d'appartements par quartier
-	    url = "http://www.marocannonces.com/maroc/vente-appartements-#{@district.maroc_annonces_name}-b315-t563.html?quartier=#{@district.maroc_annonces_code}&pge=#{k}"
+	    url = "http://www.marocannonces.com/maroc/location-appartements-#{@district.maroc_annonces_name}-b321-t563.html?quartier=#{@district.maroc_annonces_code}&pge=#{k}"
     	#ouverture de la page k
 	    data=Nokogiri::HTML(open(url))
     	items=data.css('.cars-list > li')
@@ -36,7 +36,7 @@ class MarocAnnoncesScraperSales
 
 	      if without_price?(item)
 	        puts "***************#{@website} -- #{@city.name} --#{@district.name} -- Pas de prix / Saut de l'annonce #{i} de la page #{k}*************"   
-	      elsif Sale.exists?(link: item_url)
+	      elsif Rental.exists?(link: item_url)
 	        puts "***************#{@website} -- #{@city.name} --#{@district.name}-- Existe déjà / Saut de l'annonce #{i} de la page #{k}*************"        
 	      else
 	        begin
@@ -45,9 +45,9 @@ class MarocAnnoncesScraperSales
 		        if has_details?(item_data)
 		          item_extract=extract_item_data(item,item_data,item_url)
 		          if valid_record?(item_extract)
-		            Sale.create item_extract
+		            Rental.create item_extract
 		            puts "**********#{@website} -- #{@city.name} -- #{@district.name} -- Extraction de l'annonce #{i} de la page #{k} *************"
-		            puts "#{@district.name} **** #{item_extract[:rooms]} pièces de #{item_extract[:surface]} m², au prix de #{item_extract[:price]} DH"
+		            puts "#{@district.name} **** #{item_extract[:rooms]} pièces de #{item_extract[:surface]} m², au prix de #{item_extract[:price]} DH / mois"
 		          else
 		            puts "****#{@website} -- #{@city.name} --#{@district.name} -- Non enregistré ******* Prix (#{item_extract[:price]} DH) ou Surface (#{item_extract[:surface]}) m² ou Prix du m² (#{item_extract[:sqm_price]}) non valides "
 		          end 
@@ -86,16 +86,16 @@ class MarocAnnoncesScraperSales
 	end
 
 	def has_details? item_data
-		item_data.css('.extraQuestionName > li').count >=2		
+		item_data.css('.extraQuestionName > li').count >=1		
 	end
 
 
 	def valid_record? extract  
-    moyenne=District.find_by_id(extract[:district_id]).sqm_buy
+    moyenne=District.find_by_id(extract[:district_id]).sqm_rent
     if moyenne.nil?
-      extract[:surface] >=10 && extract[:price]>=50000
+      extract[:surface] >=10 && extract[:price]<=70000 && extract[:price]>=500 
     else
-      extract[:surface] >=10 && extract[:price]>=50000 && (extract[:sqm_price] >= moyenne/3) && (extract[:sqm_price] <= 3*moyenne)
+      extract[:surface] >=10 && (extract[:sqm_price] >= moyenne/3) && (extract[:sqm_price] <= 3*moyenne)
     end
   end
 
@@ -122,13 +122,27 @@ class MarocAnnoncesScraperSales
   end
 
 	def get_rooms item_data
-	   rooms=item_data.css('.extraQuestionName > li')[1].text
-	   rooms=rooms[-1].to_i+1
+		vector=item_data.css('.extraQuestionName > li')
+	  	if vector[0].text[0..-3]=="Nombre de Chambres :"
+	    	rooms=vector[0].text
+	 	elsif vector.count >=2 && vector[1].text[0..-3]=="Nombre de Chambres :"
+	 		rooms=vector[1].text
+	 	elsif vector.count >=3 
+	 		rooms=vector[2].text
+	 	end
+	   	rooms.nil? ? 0 : rooms[-1].to_i+1 	
 	end
 
   def get_surface item_data
-    surface=item_data.css('.extraQuestionName > li')[0].text
-    surface=surface[16..-1].to_i
+  	vector=item_data.css('.extraQuestionName > li')
+  	if vector[0].text[0..6]=="Surface"
+    	surface=item_data.css('.extraQuestionName > li')[0].text
+ 	elsif vector.count >=2 && vector[1].text[0..6]=="Surface"
+ 		surface=item_data.css('.extraQuestionName > li')[1].text
+ 	elsif vector.count >=3 
+ 		surface=item_data.css('.extraQuestionName > li')[2].text
+ 	end
+    surface.nil? ? 0 : surface[16..-1].to_i
   end
    
 
