@@ -43,24 +43,27 @@ class Scrap < ActiveRecord::Base
 		end
 	end
 
-	def self.bring_sales
+	def self.bring_sales(*district_min,*district_max)
 		storage=[]
 		start=Time.now
 
 		initial=City.first.sales.count
 		District.where("city_id = ? AND maroc_annonces_code >= ?",1,1).each do |district|
-			puts "starting #{district.name} scrap"
-			sc=MarocAnnoncesScraperSales.new district
 			
-			cmp=Sale.count
-			sc.perform
-			cmp=Sale.count-cmp
-			puts "Sales **** finished #{district.name} scrap - #{cmp} scraped"
-			var=1.0*cmp/district.sales.count
-			storage << "#{district.name} -- #{cmp} annonces -- variation :#{var}"
-	
-			district.update sales_count: district.sales.count, sqm_buy: district.buy_sqm_price, yield: district.calculate_yield
-			puts "**Sales** updating #{district.name} "
+			if district.id<=district_max && district.id>=district_min
+				puts "starting #{district.name} scrap"
+				sc=MarocAnnoncesScraperSales.new district
+				
+				cmp=Sale.count
+				sc.perform
+				cmp=Sale.count-cmp
+				puts "Sales **** finished #{district.name} scrap - #{cmp} scraped"
+				var=1.0*cmp/district.sales.count
+				storage << "#{district.name} -- #{cmp} annonces -- variation :#{var}"
+		
+				district.update sales_count: district.sales.count, sqm_buy: district.buy_sqm_price, yield: district.calculate_yield
+				puts "**Sales** updating #{district.name} "
+			end
 		end
 		var=(City.first.sales.count-initial)/initial
 		self.create website: "http://www.marocannonces.com/", category: "Ventes", city_id: 1,
