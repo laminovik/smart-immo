@@ -67,7 +67,8 @@ class Scrap < ActiveRecord::Base
 				puts "**Sales** updating #{district.name} "
 			end
 		end
-		var=(City.first.sales.count-initial)/initial
+		cmp=City.first.sales.count-initial
+		var=cmp/initial
 		self.create website: "http://www.marocannonces.com/", category: "Ventes", city_id: 1,
 						 started: start, ended: Time.now, total_scraped: cmp , variation: var
 
