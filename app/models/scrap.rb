@@ -52,7 +52,7 @@ class Scrap < ActiveRecord::Base
 		initial=City.first.sales.count
 		District.where("city_id = ? AND maroc_annonces_code >= ?",1,1).each do |district|
 			
-			if district.id<=district_max && district.id>=district_min
+			if district.id<=max && district.id>=min
 				puts "starting #{district.name} scrap"
 				sc=MarocAnnoncesScraperSales.new district
 				
