@@ -43,14 +43,15 @@ class Scrap < ActiveRecord::Base
 		end
 	end
 
-	def self.bring_sales(min=nil,max=nil)
+	def self.bring_sales(min=nil,max=nil,ratio=nil)
 		min ||= 0
 		max ||= 1000
+		ratio ||= 1
 		storage=[]
 		start=Time.now
 
 		initial=City.first.sales.count
-		District.where("city_id = ? AND maroc_annonces_code >= ?",1,1).each do |district|
+		District.where("city_id >= ? AND maroc_annonces_code >= ?",2,1).each do |district|
 			
 			if district.id<=max && district.id>=min
 				puts "starting #{district.name} scrap"
@@ -76,14 +77,15 @@ class Scrap < ActiveRecord::Base
 		storage
 	end
 
-	def self.bring_rentals(min=nil,max=nil)
+	def self.bring_rentals(min=nil,max=nil, ratio=nil)
 		min ||= 0
 		max ||= 1000
+		ratio ||= 1
 		storage=[]
 		start=Time.now
 
 		initial=City.first.rentals.count
-		District.where("city_id = ? AND maroc_annonces_code >= ?",1,1).each do |district|
+		District.where("city_id >= ? AND maroc_annonces_code >= ?",2,1).each do |district|
 			
 			if district.id<=max && district.id>=min
 				puts "starting #{district.name} scrap"

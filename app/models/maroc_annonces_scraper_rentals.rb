@@ -21,7 +21,7 @@ class MarocAnnoncesScraperRentals
     while more_pages
 
 	    #url k des pages de ventes d'appartements par quartier
-	    url = "http://www.marocannonces.com/maroc/location-appartements-#{@district.maroc_annonces_name}-b321-t563.html?quartier=#{@district.maroc_annonces_code}&pge=#{k}"
+	    url = "http://www.marocannonces.com/maroc/location-appartements-#{@district.maroc_annonces_name}-b321-t#{@city.maroc_annonces_code}.html?quartier=#{@district.maroc_annonces_code}&pge=#{k}"
     	#ouverture de la page k
 	    data=Nokogiri::HTML(open(url))
     	items=data.css('.cars-list > li')
