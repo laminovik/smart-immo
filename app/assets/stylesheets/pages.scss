@@ -2,13 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.input-group {
-	
-	width: 120px;
+
+@media (min-width: 768px) {
+	.input-group {
+    	width: auto;
+	}
+
+ 	#city_district_id {
+		width: auto;
+	}
 }
 
-#city_district_id {
-	
-	width: 200px;
+@media (min-width: 769px) {
+	.input-group {
+    	width: 120px;
+	}
+
+ 	#city_district_id {
+		width: 150px;
+	}
+}
+
+@media (min-width: 1170px) {
+	.input-group {
+    	width: 120px;
+	}
+
+ 	#city_district_id {
+		width: 200px;
+	}
 }
 
