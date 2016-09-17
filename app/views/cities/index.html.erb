@@ -1,11 +1,11 @@
 <div class="container">
- 
-<br />   
+
+  <br />   
   <div class="row well">
     <h2 class="col-xs-offset-4">Indicateurs immobiliers par ville</h2>
     <h6 class="col-xs-offset-10 col-xs-2"><span class="btn btn-link" style="position: absolute; bottom: 0; right: 0;"><%= link_to "Retour à l'accueil", root_path(anchor: "panorama"), method: :get %></span></h6>
-
   </div>
+
   <div class="row">
     <div class="col-xs-offset-2 col-xs-2">
       <i>Villes analysées &nbsp &nbsp</i><span class="badge"><%= @cities.count%> </span>
@@ -20,34 +20,33 @@
     </div>
   </div>
   <hr />
-   <br />
+  <br />
 
-		<table class="table table-striped text-center">
-    		<thead>
-     			 <tr>
-			        <th>&nbsp &nbsp &nbsp &nbsp Ville</th>
-			        <th>Quartiers</th>
-			        <th>Annonces de vente</th>
-			        <th>Prix moyen du m²</th>
-			        <th>Annonces de location</th>
-			        <th>Loyer moyen du m²</th>
-			        <th>Rentabilité annuelle brute</th>
-			      </tr>
-   			 </thead>
-   			 <% @cities.each do |city| %>
-   			 	<tr>
-   			 		 <td><%= link_to city.name, city %></td>
-         			 <td><%= city.districts.count %></td>
-         			 <td><%= number_with_delimiter(city.sales_count, delimiter: " ") %></td>
-         			 <td><%= number_with_delimiter(city.buy_sqm, delimiter: " ") %></td>
-         			 <td><%= number_with_delimiter(city.rentals_count, delimiter: " ")%></td>
-         			 <td><%= number_with_delimiter(city.rent_sqm, delimiter: " ")%></td>
-         			 <td><%= city.yield.to_s+ " %" %></td>
-      			</tr>
-      		<% end %>
-      	</table>
-			       
+	<table class="table table-striped text-center">
+    <thead>
+		  <tr>
+        <th>&nbsp &nbsp &nbsp &nbsp Ville</th>
+        <th>Quartiers</th>
+        <th>Annonces de vente</th>
+        <th>Prix moyen du m²</th>
+        <th>Annonces de location</th>
+        <th>Loyer moyen du m²</th>
+        <th>Rentabilité annuelle brute</th>
+      </tr>
+	  </thead>
 
-				
+	  <% @cities.each do |city| %>
+	 	<tr>
+	 		<td><%= link_to city.name, city %></td>
+ 			<td><%= city.districts.count %></td>
+ 			<td><%= number_with_delimiter(city.sales_count, delimiter: " ") %></td>
+ 			<td><%= number_with_delimiter(city.buy_sqm, delimiter: " ") %></td>
+ 			<td><%= number_with_delimiter(city.rentals_count, delimiter: " ")%></td>
+ 			<td><%= number_with_delimiter(city.rent_sqm, delimiter: " ")%></td>
+ 			<td><%= city.yield.to_s+ " %" %></td>
+		</tr>
+	  <% end %>
+
+  </table>
 
 </div>
