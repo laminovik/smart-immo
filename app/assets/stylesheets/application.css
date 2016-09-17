@@ -46,7 +46,13 @@
 
 .navbar-header {
 
-	padding-top: 5px;
+	padding-top: 0px;
+
+}
+
+.navbar-brand {
+
+    padding-top: 5px;
 }
 
 @media (max-width: 767px) {

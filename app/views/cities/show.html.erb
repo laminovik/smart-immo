@@ -1,49 +1,56 @@
 
 
 <div class="container">
+ 
+  <h6 class="pull-right">
+    <span class="btn btn-link">&raquo; &nbsp<%= link_to "Retour à l'index des villes", root_path(anchor: "panorama"), method: :get%></span>
+  </h6>
+
+  <br /> 
 	<br /> 
+  <br /> 
+
   <div class="row well">
-    <h3 class="col-xs-offset-3 col-xs-6">Rendement locatif des quartiers de <%= @city.name %></h3>
-    <h6 class="col-xs-offset-1 col-xs-2"><span class="btn btn-link" style="position: absolute; bottom: 0; right: 0;"><%= link_to "Retour à l'index des villes", root_path(anchor: "panorama"), method: :get%></span></h6>
+    <h3 class="text-center">Rendement locatif des quartiers de <%= @city.name %></h3> 
   </div>
   <div class="row">
-    <div class="col-xs-offset-2 col-xs-2">
+    <div class="col-xs-offset-3 col-md-offset-2 col-md-2 col-xs-9">
       <i>Quartiers analysés &nbsp &nbsp</i><span class="badge"><%= @districts.count%> </span>
     </div>
-    <div class="col-xs-3">
+    <div class="col-md-3 hidden-xs">
       <i>Total des annonces de vente &nbsp &nbsp</i><span class="badge"><%= @city.sales_count%> </span>
     </div>
-    <div class="col-xs-3">
+    <div class="col-md-3 hidden-xs">
       <i>Total des annonces de location &nbsp &nbsp</i><span class="badge"><%= @city.rentals_count%> </span>
     </div>
   </div>
+
   <hr>
   <br />
-  <br />
-		<table class="table table-striped text-center">
-    	<thead>
- 			  <tr>
-	        <th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Quartier</th>
-	        <th>Annonces de vente</th>
-	        <th>Prix moyen du m²</th>
-	        <th>Annonces de location</th>
-	        <th>Loyer moyen du m²</th>
-	        <th>Rentabilité annuelle brute</th>
-	      </tr>
-			</thead>
-   			<% @districts.each do |district| %>
-   			 	<tr>
-            <td><%= district.name %></td>
-            <td><%= district.sales_count %></td>
-            <td><%= district.sqm_buy %></td>
-            <td><%= district.rentals_count %></td>
-            <td><%= district.sqm_rent %></td>
-            <td><%= district.yield.to_s+ " %" %></td>
-      		</tr>
-      		<% end %>
-      	</table>
-			       
 
-				
+
+	<table class="table table-striped text-center">
+  	<thead>
+			  <tr>
+        <th class="text-center"> Quartier</th>
+        <th class="text-center hidden-xs">Annonces de vente</th>
+        <th class="text-center">Prix<span class="hidden-xs">moyen</span> du m²</th>
+        <th class="text-center hidden-xs">Annonces de location</th>
+        <th class="text-center">Loyer<span class="hidden-xs">moyen</span> du m²</th>
+        <th class="text-center">Rentabilité annuelle brute</th>
+      </tr>
+		</thead>
+			<% @districts.each do |district| %>
+			 	<tr>
+        <td><%= district.name %></td>
+        <td class="hidden-xs"><%= number_with_delimiter(district.sales_count, delimiter: " ") %></td>
+        <td><%= number_with_delimiter(district.sqm_buy, delimiter: " ") %></td>
+        <td class="hidden-xs"><%= number_with_delimiter(district.rentals_count, delimiter: " ") %></td>
+        <td><%= district.sqm_rent %></td>
+        <td><%= district.yield.to_s+ " %" %></td>
+  		</tr>
+  	<% end %>
+  </table>
+			       
 
 </div>

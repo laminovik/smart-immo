@@ -20,7 +20,7 @@
 
             <div class="row how-it-work text-center">
 
-                <div class="col-md-4 col-xs-6">
+                <div class="col-md-4">
                     <div class="single-work wow fadeInUp" data-wow-delay="0.8s">
                     	 <%= link_to (image_tag "how-work1.png", style: "heigth: 100px; width: 80px;"), root_path(anchor: "eval"), method: :get%>  
                         <h3>Evaluez votre bien immobilier au plus juste</h3>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                
-                <div class="col-md-4 col-xs-6">
+                <div class="col-md-4">
                     <div class="single-work wow fadeInUp"  data-wow-delay="1s">
                     	<%= link_to (image_tag "palmares.png", style: "heigth: 100px; width: 80px;"), root_path(anchor: "palmares"), method: :get %>                   
                         <h3>Découvrez les quartiers les plus rentables</h3>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                 <div class="col-md-4 col-xs-8">
+                 <div class="col-md-4">
                     <div class="single-work  wow fadeInUp"  data-wow-delay="0.9s">
                         <%= link_to (image_tag "calcul1.jpeg", style: "heigth: 100px; width: 80px;"), root_path(anchor: "panorama"), method: :get %>
                         <h3>Parcourez notre panorama du marché marocain</h3>
@@ -49,11 +49,12 @@
                         </p>
                     </div>
                 </div>
-
             </div>
         </div>
+
         <br />
         <hr>
+
     </div>
 
     <div class="row" id="eval">
@@ -64,7 +65,7 @@
         <br />
 
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-xs-12">
-            <h2 class="col-xs-offset-4">Estimation de biens</h2>
+            <h2 class="text-center">Estimation de biens</h2>
             <p class="text-center">
                 Que ce soit pour une valorisation à la vente comme à la location, précisez les caractéristiques du bien immobilier et obtenez une évaluation au plus près des prix du marché !
             </p>
@@ -112,22 +113,23 @@
     <br />
     
 
+    <div class="container" id="palmares">
 
+        <br />
+        <br />
+        <hr />
+        <br />
+        <br />
 
-<div class="container" id="palmares">
-    <br />
-    <br />
-    <hr />
-    <br />
-    <br />
+        <div class="row page-title text-center wow bounce"  data-wow-delay="1s">  
+            <h2>Palmarès des 5 quartiers les plus rentables</h2>
+        </div>
 
-    <div class="row page-title text-center wow bounce"  data-wow-delay="1s">  
-        <h2>Palmarès des 5 quartiers les plus rentables</h2>
-    </div>
-    <br />
+        <br />
+
     <div class="row jobs">
         <div class="col-md-offset-1 col-md-10 col-xs-12">
-            <div class="job-posts table-responsive">
+            <div class="table-responsive">
                 <table class="table text-center">
                     <thead >
                          <tr>
@@ -160,54 +162,57 @@
          <h4>&raquo; &nbsp &nbsp<%= link_to "Découvrez le classement intégral", districts_index_path%> </h4>
     </div>
 
-<br />
-<br />
+    <br />
+    <br />
    
 
     <div class="container" id="panorama">
 
         <br />
-<hr />
-<br />
-                <div class="row page-title text-center wow bounce"  data-wow-delay="1s">
-                    
-                    <h4>Panorama du marché par ville</h4>
-                    <h2><span><%= number_with_delimiter(Rental.count+Sale.count, delimiter: " ") %></span> annonces immobilières analysées</h2>
-                    <i>&raquo; &nbsp  Cliquez sur une ville pour plus de détails </i>
-                </div>
-                <br />
-                <div class="row jobs">
-                    <div class="col-md-offset-1 col-md-10 col-xs-12">
-                        <div class="job-posts table-responsive">
-                            <table class="table table-condensed text-center">
-                                <thead>
-                                     <tr>
-                                        <th><%= image_tag "maroc_carte.png", class: "col-md-offset-3", style: "width: 50px; height: 40px"%></th>
-                                        <th class="text-center hidden-xs hidden-sm">Quartiers</th>
-                                        <th class="text-center visible-lg">Annonces de vente</th>
-                                        <th class="text-center">Prix moyen du m²</th>
-                                        <th class="text-center visible-lg">Annonces de location</th>
-                                        <th class="text-center">Loyer moyen du m²</th>
-                                      </tr>
-                                </thead>
-                                 <% @cities.each do |city| %>
-                                    <tr class="odd wow fadeInUp" data-wow-delay="1s">
-                                        <td class="tbl-title text-left"><i><h5>&raquo; &nbsp &nbsp <%= link_to city.name, city %></h5></i></td>
-                                        <td class="hidden-xs hidden-sm"><%= city.districts.count %></td>
-                                        <td class="visible-lg"><%= number_with_delimiter(city.sales_count, delimiter: " ") %></td>
-                                        <td><%= number_with_delimiter(city.buy_sqm, delimiter: " ") %></td>
-                                        <td class="visible-lg"><%= number_with_delimiter(city.rentals_count, delimiter: " ")%></td>
-                                        <td><%= number_with_delimiter(city.rent_sqm, delimiter: " ")%></td>
-                                    </tr>
-                                <% end %>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+        <hr />
+        <br />
+            
+        <div class="row page-title text-center wow bounce"  data-wow-delay="1s">      
+            <h4>Panorama du marché par ville</h4>
+            <h2><span><%= number_with_delimiter(Rental.count+Sale.count, delimiter: " ") %></span> annonces immobilières analysées</h2>
+            <i>&raquo; &nbsp  Cliquez sur une ville pour plus de détails </i>
+        </div>
 
-                <br />
-                <br />
-                <br />
+        <br />
+
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-condensed text-center">
+                        <thead>
+                             <tr>
+                                <th><%= image_tag "maroc_carte.png", class: "col-md-offset-3", style: "width: 50px; height: 40px"%></th>
+                                <th class="text-center hidden-xs hidden-sm">Quartiers</th>
+                                <th class="text-center visible-lg">Annonces de vente</th>
+                                <th class="text-center">Prix<span class="hidden-xs"> moyen</span> du m²<p class="visible-xs">(moyenne)</p></th>
+                                <th class="text-center visible-lg">Annonces de location</th>
+                                <th class="text-center">Loyer<span class="hidden-xs"> moyen</span> du m²<p class="visible-xs">(moyenne)</p></th>
+                              </tr>
+                        </thead>
+                         <% @cities.each do |city| %>
+                            <tr class="odd wow fadeInUp" data-wow-delay="1s">
+                                <td class="tbl-title text-left"><i><h5 class="hidden-xs">&raquo; &nbsp &nbsp</h5><h5> <%= link_to city.name, city %></h5></i></td>
+                                <td class="hidden-xs hidden-sm"><%= city.districts.count %></td>
+                                <td class="visible-lg"><%= number_with_delimiter(city.sales_count, delimiter: " ") %></td>
+                                <td><%= number_with_delimiter(city.buy_sqm, delimiter: " ") %></td>
+                                <td class="visible-lg"><%= number_with_delimiter(city.rentals_count, delimiter: " ")%></td>
+                                <td><%= number_with_delimiter(city.rent_sqm, delimiter: " ")%></td>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <br />
+
     </div>
 
 
