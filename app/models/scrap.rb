@@ -10,7 +10,7 @@ class Scrap < ActiveRecord::Base
 			sc=AvitoScraperSales.new city
 			start=Time.now
 			cmp=Sale.count
-			sc.perform
+			sc.perform ratio
 			cmp=Sale.count-cmp
 			puts "Sales **** finished #{city.name} scrap - #{cmp} scraped"
 			var=1.0*cmp/city.sales.count
@@ -34,7 +34,7 @@ class Scrap < ActiveRecord::Base
 			sc=AvitoScraperRentals.new city
 			start=Time.now
 			cmp=Rental.count
-			sc.perform(ratio)
+			sc.perform ratio
 			cmp=Rental.count-cmp
 			puts "Rentals **** finished #{city.name} scrap - #{cmp} scraped"
 			var=1.0*cmp/city.rentals.count

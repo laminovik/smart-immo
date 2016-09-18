@@ -9,7 +9,7 @@ class AvitoScraperRentals
 
   attr_accessor :website, :city
 
-  def perform   
+  def perform ratio  
     #url main_page des locations d'appartements par ville
     url = "https://www.avito.ma/fr/#{URI::encode(@city.name.downcase)}/appartements-%C3%A0_louer"
     #url de navigation dans les pages de résultats des locations
@@ -18,7 +18,7 @@ class AvitoScraperRentals
     #nombre de pages de résultats à parcourir
     total_pages=count_pages(data)
     #boucle de parcours des pages de résultats
-    for k in 2..(total_pages/7)
+    for k in 2..(total_pages/ratio)
       items=data.css('h2.fs14')
       i=1
       #parcours des 35 résultats de la page num k

@@ -196,7 +196,7 @@
                         </thead>
                          <% @cities.each do |city| %>
                             <tr class="odd wow fadeInUp" data-wow-delay="1s">
-                                <td class="tbl-title text-left"><i><h5 class="hidden-xs">&raquo; &nbsp &nbsp</h5><h5> <%= link_to city.name, city %></h5></i></td>
+                                <td class="tbl-title text-left"><i><h5> <span class="hidden-xs">&raquo; &nbsp &nbsp</span> <%= link_to city.name, city %></h5></i></td>
                                 <td class="hidden-xs hidden-sm"><%= city.districts.count %></td>
                                 <td class="visible-lg"><%= number_with_delimiter(city.sales_count, delimiter: " ") %></td>
                                 <td><%= number_with_delimiter(city.buy_sqm, delimiter: " ") %></td>
