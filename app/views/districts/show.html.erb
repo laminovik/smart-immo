@@ -8,7 +8,7 @@
     <div class="panel panel-danger">   
           
       <div class="panel-heading">
-      	<h3 class="panel-title text-center">Estimation de votre bien</h3>
+      	<h3 class="panel-title text-center">Estimation du bien</h3>
       </div>
       
       <div class="panel-body">
@@ -54,17 +54,17 @@
             </li>
 
              <li class="list-group-item">
-              Estimation basse du m²
+              Estimation basse<span class="hidden-xs"> du m²</span>
               <span class="badge"><%=number_with_delimiter(@stats_sales[:q1].to_i, delimiter: " ")%> DH</span>
             </li>
 
             <li class="list-group-item">
-              Estimation moyenne du m²
+              Estimation moyenne<span class="hidden-xs"> du m²</span>
               <span class="badge"><%= number_with_delimiter(@stats_sales[:mean].to_i, delimiter: " ")%> DH</span>
             </li>             
 
             <li class="list-group-item">
-              Estimation haute du m²
+              Estimation haute<span class="hidden-xs"> du m²</span>
               <span class="badge"><%=number_with_delimiter(@stats_sales[:q3].to_i, delimiter: " ")%> DH</span>
             </li>
           </ul>
@@ -90,18 +90,18 @@
             </li>
 
             <li class="list-group-item">
-              Estimation basse du m²
+              Estimation basse<span class="hidden-xs"> du m²</span>
               <span class="badge"><%=@stats_rentals[:q1].to_i%> DH</span>
             </li>
 
             <li class="list-group-item">
-              Estimation moyenne du m²
+              Estimation moyenne<span class="hidden-xs"> du m²</span>
               <span class="badge"><%=@stats_rentals[:mean].to_i%> DH</span>
             </li>
 
 
             <li class="list-group-item">
-              Estimation haute du m²
+              Estimation haute<span class="hidden-xs"> du m²</span>
               <span class="badge"><%=@stats_rentals[:q3].to_i%> DH</span>
             </li>
 
