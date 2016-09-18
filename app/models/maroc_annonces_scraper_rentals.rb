@@ -11,12 +11,13 @@ class MarocAnnoncesScraperRentals
 
   attr_accessor :website, :city, :district
 
-  def perform   
+  def perform ratio  
     
     #compteur des pages de resultats
   	k=1
     #condition de poursuite vers la page suivante (absence du nombre total d'annonces)
     more_pages=true
+    total=@district.rentals.where(website: "http://www.marocannonces.com/").count/20
 
     while more_pages
 
@@ -71,10 +72,13 @@ class MarocAnnoncesScraperRentals
 	  	#bloc pour vérifier si la page courante k est la dernière
 	  	pages=data.css('ul.paging').css('li')
 	  	displayed=pages.count
-	  	if items.count <=19 
+	  	
+	  	if k >= (1+total/ratio) or items.count <=19 
+	  		more_pages=false
+	  	elsif pages[displayed-2].nil? 
 	  		more_pages=false
 	  	elsif pages[displayed-2].children.children.text == k.to_s
-	  		
+	  		more_pages=false	
 	  	end
 	  	k+=1
 	  	#sleep(2)

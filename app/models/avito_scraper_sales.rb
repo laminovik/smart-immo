@@ -10,7 +10,7 @@ class AvitoScraperSales
 
   attr_accessor :website, :date, :city
 
-  def perform
+  def perform ratio
     
     #url main_page des ventes d'appartements à Casablanca, Rabat, Marrakech, Tanger, Agadir, Mohammedia, Kénitra, k%C3%A9nitra
     url = "https://www.avito.ma/fr/#{URI::encode(@city.name.downcase)}/appartements-%C3%A0_vendre"
@@ -21,7 +21,7 @@ class AvitoScraperSales
     #nombre de pages de résultats à parcourir
     total_pages=count_pages(data)
     #boucle de parcours des pages de résultats
-    for k in 2..(total_pages/7)
+    for k in 2..(total_pages/ratio)
       #data=Nokogiri::HTML(open(nav_url+k.to_s))
       items=data.css('h2.fs14')
       i=1
