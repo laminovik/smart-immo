@@ -25,7 +25,7 @@
 	      <li> <%= link_to 'Estimation de biens', root_path(anchor: "eval"), method: :get %> </li>
 	      <li> <%= link_to "Quartiers les plus rentables", root_path(anchor: "palmares"), method: :get  %> </li>
 	      <li> <%= link_to "Marché par ville", root_path(anchor: "panorama"), method: :get %> </li>  
-	      <li> <a href="#">A propos</a> </li>
+	      <li class="hidden-sm"> <a href="#">A propos</a> </li>
 	    </ul>
 	    <p class="navbar-text pull-right">
 		<% if user_signed_in? %>
