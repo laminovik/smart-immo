@@ -17,5 +17,29 @@ jQuery ->
 			$('#city_district_id').val('nil')
 			
 		else	
-			$('#city_district_id').html(districts)	
+			$('#city_district_id').html(districts)
+
+	$('form').on 'submit', (e) ->	
+		city = $('#city_id :selected').text()
+		district = $('#city_district_id :selected').val()
+		surface = $('#surface').val()
+
+		if city == 'Ville'
+			e.preventDefault()
+			$("div.city_alert").show("slow").delay(4000).hide("slow")
+			return false
+		else if district == 'nil'
+			e.preventDefault()
+			$("div.district_alert").show("slow").delay(4000).hide("slow")
+			return false
+		else if surface.length < 2
+			e.preventDefault()
+			$("div.surface_alert").show("slow").delay(4000).hide("slow")
+			return false
+		else
+			return true
+			
+
+      	
+	
 
