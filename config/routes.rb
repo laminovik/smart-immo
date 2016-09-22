@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :districts, :path => '/districts', :only => [:index, :show]
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   #get 'cities/index'
 
   #get 'cities/show'
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :rentals
   resources :sales
   resources :cities, :path => '/cities', :only => [:index, :show]
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

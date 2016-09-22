@@ -2,6 +2,21 @@
 
 <div class="container">
  
+  
+    <form class="pull-left form-inline"> 
+                    
+      <div class="form-group">
+          <select name="sort" id="sort" class="form-control" onchange="this.form.submit()">
+              <option value="name" <%= @filter=="name" ? "selected" : nil %>>Tri par ordre alphabétique</option>
+              <option value="sqm_buy" <%= @filter=="sqm_buy" ? "selected" : nil %>>Tri par prix du m²</option>
+              <option value="sqm_rent" <%= @filter=="sqm_rent" ? "selected" : nil %>>Tri par loyer du m²</option>
+              <option value="yield" <%= @filter=="yield" ? "selected" : nil %>>Tri par rendement annuel</option>
+          </select>
+      </div>
+    </form>
+
+
+
   <h6 class="pull-right">
     <span class="btn btn-link">&raquo; &nbsp<%= link_to "Retour à l'index des villes", root_path(anchor: "panorama"), method: :get%></span>
   </h6>
