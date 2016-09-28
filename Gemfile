@@ -35,10 +35,11 @@ gem 'descriptive_statistics', '~> 2.4.0', :require => 'descriptive_statistics/sa
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'capistrano', '~> 2.15.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
