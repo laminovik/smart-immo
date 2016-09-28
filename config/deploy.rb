@@ -1,9 +1,7 @@
 
 require "bundler/capistrano"
 
-server "188.166.164.6", :web, :app 
-
-server "smartimmo.cjo5yvp83xfv.eu-west-1.rds.amazonaws.com:5432", :db, primary: true
+server "188.166.164.6", :web, :app, :db, primary: true
 
 set :application, "smart-immo"
 set :user, "deployer"
